@@ -5,10 +5,13 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   //prompt user asking lengh of password
 
+
   var userPasswordLength = prompt("Please pick a password length between 8 and 128.");
-  if (userPasswordLength < 8 || userPasswordLength > 128) {
+  if (userPasswordLength <= 8 || userPasswordLength >= 128) {
     alert("Invalid character, please try again");
-  }
+
+  } else (userPasswordLength);  ///why isnt my else working???
+
 
   // confirm true of false which characters the user wants to use
 
@@ -24,17 +27,11 @@ function writePassword() {
 
   passwordText.value = password;
 
-
 }
 
 //When I click button then I will begin code
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword)
-
-
-
-
 
 //create a for loop that repeats as many characters as the user imputted
 function generatePassword(length, lower, upper, number, symbol) {
@@ -48,7 +45,7 @@ function generatePassword(length, lower, upper, number, symbol) {
       tempPassword += getRandomLower();
 
     }
-    if (upper=== true) {
+    if (upper === true) {
       tempPassword += getRandomUpper();
     }
     if (number === true) {
@@ -59,14 +56,13 @@ function generatePassword(length, lower, upper, number, symbol) {
     }
 
 
-
-
   }
   return tempPassword.slice(0, length);
 };
 
-
-//defining all the functions together for final array
+//tempCount combines the characters for the final array
+//then runs through the if statements to get the users inputs
+//retuen with the final password
 
 
 //Uses browser character set.Lowercase is 97-122 
