@@ -21,5 +21,3 @@ THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written 
 ```
-
-The most difficult part of this project was incorporating the code that the user supplied. It would have been easier at this point in the bootcamp If I knew what each line meant. I also had trouble figuring out how to randomize the entire  The comments made it diffidult for me. Beyond that I was able to complete the application for the user. 

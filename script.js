@@ -3,16 +3,16 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
+
   //prompt user asking lengh of password
-
-
   var userPasswordLength = prompt("Please pick a password length between 8 and 128.");
-  if (userPasswordLength <= 8 || userPasswordLength >= 128) {
+
+  
+  while (isNaN(userPasswordLength) || userPasswordLength < 8 || userPasswordLength > 128) {
     alert("Invalid character, please try again");
-
-  } else (userPasswordLength);  ///why isnt my else working???
-
-
+    userPasswordLength = prompt("Please pick a password length between 8 and 128.");
+  }
+  
   // confirm true of false which characters the user wants to use
 
   var userLower = confirm("Do you want to use lower case characters?");
@@ -22,6 +22,17 @@ function writePassword() {
   var userNumber = confirm("Do you want to use numbers?");
 
   var userSymbol = confirm("Do you want to use symbols?");
+
+  while(!userLower && !userUpper && !userNumber && !userSymbol ) {
+    userLower = confirm("Do you want to use lower case characters?");
+
+    userUpper = confirm("Do you want to use upper case characters?");
+
+    userNumber = confirm("Do you want to use numbers?");
+
+    userSymbol = confirm("Do you want to use symbols?");
+  }
+
   var password = generatePassword(userPasswordLength, userLower, userUpper, userNumber, userSymbol);
   var passwordText = document.querySelector("#password");
 
@@ -35,7 +46,6 @@ generateBtn.addEventListener("click", writePassword)
 
 //create a for loop that repeats as many characters as the user imputted
 function generatePassword(length, lower, upper, number, symbol) {
-  //console.log(length);
   var tempPassword = "";
   var tempCount = lower + upper + number + symbol;
   console.log(tempCount);
@@ -62,32 +72,41 @@ function generatePassword(length, lower, upper, number, symbol) {
 
 //tempCount combines the characters for the final array
 //then runs through the if statements to get the users inputs
-//retuen with the final password
+//return with the final password
 
+//functions are set up to mix up the arrays and produce a randdom character. 
 
-//Uses browser character set.Lowercase is 97-122 
 function getRandomLower() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-
+  var randomLower = lower.sort(()=> Math.random() - 0.5);
+  var randomLowerEl = randomLower[0];
+  console.log(randomLowerEl);
+  return randomLowerEl;
 }
-//Uppercase is 65-90
+
 function getRandomUpper() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+  var randomUpper = upper.sort(()=> Math.random() - 0.5);
+  var randomUpperEl = randomUpper[0];
+  console.log(randomUpperEl);
+  return randomUpperEl;
 }
-//Numbers char are 48-57
+
 function getRandomNumber() {
-  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+  var randomNumber = number.sort(()=> Math.random() - 0.5);
+  var randomNumberEl = randomNumber[0];
+  console.log(randomNumberEl);
+  return randomNumberEl;
 }
-//Symbol string can be entered manually 
+
 function getRandomSymbol() {
-  const symbols = '!@#$%^&*(){}[]=<>/,.';
-  return symbols[Math.floor(Math.random() * symbols.length)];
+  var randomSymbol = symbol.sort(()=> Math.random() - 0.5);
+  var randomSymbolEl = randomSymbol[0];
+  console.log(randomSymbolEl);
+  return randomSymbolEl;
+  
 }
 
-
-
-
-
-
-
+const lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+const upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+const number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const symbol = "!@#$%^&*(){}[]=<>/,.';".split('');
 
